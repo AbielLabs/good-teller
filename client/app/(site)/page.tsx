@@ -13,7 +13,7 @@ export default function MailPage() {
 
   return (
     <>
-      <div className="md:hidden">
+      <div className="md:hidden min-h-screen">
         <Image
           src="/examples/mail-dark.png"
           width={1280}

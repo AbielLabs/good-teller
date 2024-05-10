@@ -60,6 +60,10 @@ export function Products({
         <ResizableHandle withHandle />
         {/* second part */}
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
+          <div className="px-3 py-2 ">
+            <h1>Good Teller</h1>
+            <Separator />  F
+          </div>
           <MailList items={mails} />
         </ResizablePanel>
         <ResizableHandle withHandle />
