@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import Image from "next/image";
 
-import { Mail } from "@/app/(site)/components/home";
+import {  Products } from "@/app/(site)/components/home";
 import { accounts, mails } from "@/app/(site)/data";
 
 export default function MailPage() {
@@ -30,7 +30,7 @@ export default function MailPage() {
         />
       </div>
       <div className="hidden flex-col md:flex">
-        <Mail
+        <Products
           accounts={accounts}
           mails={mails}
           defaultLayout={defaultLayout}
