@@ -30,6 +30,15 @@ If you encounter any issues or have questions about Good Teller, our support tea
 
 We welcome contributions from the open-source community to improve and enhance Good Teller. If you'd like to contribute code, report bugs, or suggest new features, please see our [contribution guidelines](CONTRIBUTING.md) for more information.
 
+
+## FlowChart:
+
+Here are some screenshots of our platform in action:
+
+![Flow Chart](readme_img/goodteller_flow.png)
+
+
+
 ## License
 
 Good Teller is licensed under the [MIT License](LICENSE). See the [LICENSE](LICENSE) file for details.
