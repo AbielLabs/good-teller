@@ -33,7 +33,6 @@ We welcome contributions from the open-source community to improve and enhance G
 
 ## FlowChart:
 
-Here are some screenshots of our platform in action:
 
 ![Flow Chart](readme_img/goodteller_flow.png)
 

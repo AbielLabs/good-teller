@@ -26,7 +26,7 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AccountSwitcher } from "@/app/(site)/components/account-switcher";
-import { MailDisplay } from "@/app/(site)/components/mail-display";
+import { MailDisplay } from "@/app/(site)/components/display";
 import { MailList } from "@/app/(site)/components/mail-list";
 import { Nav } from "@/app/(site)/components/nav";
 import { type Mail } from "@/app/(site)/data";
@@ -108,35 +108,24 @@ export function Mail({
                 variant: "default",
               },
               {
-                title: "Drafts",
+                title: "Products",
                 label: "9",
                 icon: File,
                 variant: "ghost",
               },
               {
-                title: "Sent",
+                title: "Debtors",
                 label: "",
                 icon: Send,
                 variant: "ghost",
               },
               {
-                title: "Junk",
+                title: "Paid User",
                 label: "23",
                 icon: ArchiveX,
                 variant: "ghost",
               },
-              {
-                title: "Trash",
-                label: "",
-                icon: Trash2,
-                variant: "ghost",
-              },
-              {
-                title: "Archive",
-                label: "",
-                icon: Archive,
-                variant: "ghost",
-              },
+          
             ]}
           />
           <Separator />
