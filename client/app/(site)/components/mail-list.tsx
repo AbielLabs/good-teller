@@ -58,15 +58,7 @@ export function MailList({ items }: MailListProps) {
             <div className="line-clamp-2 text-xs text-muted-foreground">
               {item.text.substring(0, 300)}
             </div>
-            {item.labels.length ? (
-              <div className="flex items-center gap-2">
-                {item.labels.map((label) => (
-                  <Badge key={label} variant={getBadgeVariantFromLabel(label)}>
-                    {label}
-                  </Badge>
-                ))}
-              </div>
-            ) : null}
+                  
           </button>
         ))}
       </div>

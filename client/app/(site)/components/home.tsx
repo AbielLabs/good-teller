@@ -3,16 +3,13 @@
 import * as React from "react";
 import {
   AlertCircle,
-  Archive,
   ArchiveX,
   File,
   Inbox,
-  MessagesSquare,
   Search,
   Send,
-  ShoppingCart,
-  Trash2,
   Users2,
+  LogOut
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -26,12 +23,10 @@ import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AccountSwitcher } from "@/app/(site)/components/account-switcher";
-import { MailDisplay } from "@/app/(site)/components/display";
 import { MailList } from "@/app/(site)/components/mail-list";
 import { Nav } from "@/app/(site)/components/nav";
 import { type Mail } from "@/app/(site)/data";
 import { useMail } from "@/app/(site)/use-mail";
-import { PanelOnCollapse } from "react-resizable-panels";
 
 interface MailProps {
   accounts: {
@@ -103,13 +98,11 @@ export function Mail({
             links={[
               {
                 title: "Home",
-                label: "128",
                 icon: Inbox,
                 variant: "default",
               },
               {
                 title: "Products",
-                label: "9",
                 icon: File,
                 variant: "ghost",
               },
@@ -125,7 +118,6 @@ export function Mail({
                 icon: ArchiveX,
                 variant: "ghost",
               },
-          
             ]}
           />
           <Separator />
@@ -133,37 +125,38 @@ export function Mail({
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Social",
+                title: "Records",
                 label: "972",
                 icon: Users2,
                 variant: "ghost",
               },
               {
-                title: "Updates",
+                title: "Customer Service",
                 label: "342",
                 icon: AlertCircle,
                 variant: "ghost",
               },
+            ]}
+          />
+          <div className="mt-[2rem]">
+          <Separator />
+          <Nav
+            isCollapsed={isCollapsed}
+            links={[
               {
-                title: "Forums",
-                label: "128",
-                icon: MessagesSquare,
+                title: "Logout",
+                icon: LogOut,
                 variant: "ghost",
               },
               {
-                title: "Shopping",
-                label: "8",
-                icon: ShoppingCart,
-                variant: "ghost",
-              },
-              {
-                title: "Promotions",
-                label: "21",
-                icon: Archive,
+                title: "Customer Service",
+            
+                icon: Users2,
                 variant: "ghost",
               },
             ]}
           />
+          </div>
         </ResizablePanel>
         <ResizableHandle withHandle />
         {/* second part */}
@@ -205,9 +198,7 @@ export function Mail({
         </ResizablePanel>
         <ResizableHandle withHandle />
         <ResizablePanel defaultSize={defaultLayout[2]}>
-          <MailDisplay
-            mail={mails.find((item) => item.id === mail.selected) || null}
-          />
+          user cart
         </ResizablePanel>
       </ResizablePanelGroup>
     </TooltipProvider>
