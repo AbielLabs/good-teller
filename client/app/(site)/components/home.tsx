@@ -1,16 +1,6 @@
 "use client";
 
 import * as React from "react";
-import {
-  AlertCircle,
-  ArchiveX,
-  File,
-  Inbox,
-  Search,
-  Send,
-  Users2,
-  LogOut
-} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -22,11 +12,12 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { AccountSwitcher } from "@/app/(site)/components/account-switcher";
 import { MailList } from "@/app/(site)/components/mail-list";
 import { Nav } from "@/app/(site)/components/nav";
 import { type Mail } from "@/app/(site)/data";
 import { useMail } from "@/app/(site)/use-mail";
+import { Search } from "lucide-react";
+import Sidebar from "@/components/Sidebar";
 
 interface MailProps {
   accounts: {
@@ -61,103 +52,14 @@ export function Mail({
         }}
         className="h-full max-h-[800px] items-stretch"
       >
-        <ResizablePanel
+     
+        <Sidebar
+          isCollapsed={isCollapsed}
+          setIsCollapsed={setIsCollapsed}
           defaultSize={defaultLayout[0]}
-          collapsedSize={navCollapsedSize}
-          collapsible={true}
-          minSize={15}
-          maxSize={20}
-          onCollapse={() => {
-            setIsCollapsed(true);
-            document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              true
-            )}`;
-          }}
-          onExpand={() => {
-            setIsCollapsed(false);
-            document.cookie = `react-resizable-panels:collapsed=${JSON.stringify(
-              false
-            )}`;
-          }}
-          className={cn(
-            isCollapsed &&
-              "min-w-[50px] transition-all duration-300 ease-in-out"
-          )}
-        >
-          <div
-            className={cn(
-              "flex h-[52px] items-center justify-center",
-              isCollapsed ? "h-[52px]" : "px-2"
-            )}
-          >
-            <AccountSwitcher isCollapsed={isCollapsed} accounts={accounts} />
-          </div>
-          <Separator />
-          <Nav
-            isCollapsed={isCollapsed}
-            links={[
-              {
-                title: "Home",
-                icon: Inbox,
-                variant: "default",
-              },
-              {
-                title: "Products",
-                icon: File,
-                variant: "ghost",
-              },
-              {
-                title: "Debtors",
-                label: "",
-                icon: Send,
-                variant: "ghost",
-              },
-              {
-                title: "Paid User",
-                label: "23",
-                icon: ArchiveX,
-                variant: "ghost",
-              },
-            ]}
-          />
-          <Separator />
-          <Nav
-            isCollapsed={isCollapsed}
-            links={[
-              {
-                title: "Records",
-                label: "972",
-                icon: Users2,
-                variant: "ghost",
-              },
-              {
-                title: "Customer Service",
-                label: "342",
-                icon: AlertCircle,
-                variant: "ghost",
-              },
-            ]}
-          />
-          <div className="mt-[2rem]">
-          <Separator />
-          <Nav
-            isCollapsed={isCollapsed}
-            links={[
-              {
-                title: "Logout",
-                icon: LogOut,
-                variant: "ghost",
-              },
-              {
-                title: "Customer Service",
-            
-                icon: Users2,
-                variant: "ghost",
-              },
-            ]}
-          />
-          </div>
-        </ResizablePanel>
+          navCollapsedSize={navCollapsedSize}
+        />
+
         <ResizableHandle withHandle />
         {/* second part */}
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
@@ -190,9 +92,6 @@ export function Mail({
             </div>
             <TabsContent value="all" className="m-0">
               <MailList items={mails} />
-            </TabsContent>
-            <TabsContent value="unread" className="m-0">
-              <MailList items={mails.filter((item) => !item.read)} />
             </TabsContent>
           </Tabs>
         </ResizablePanel>
