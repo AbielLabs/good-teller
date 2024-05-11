@@ -1,14 +1,14 @@
 import { ComponentProps } from "react";
 import { formatDistanceToNow } from "date-fns";
 
-import { cn } from "@/lib/utils";
+import { cn, formatNumberToCurrency } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Product } from "@/app/(site)/data";
 import { useProduct } from "@/app/(site)/use-product";
 import { Button } from "@/components/ui/button";
-import { CarTaxiFront, ShoppingCart } from "lucide-react";
+import { CarTaxiFront, PlusIcon, ShoppingCart, ShoppingCartIcon } from "lucide-react";
 
 interface ProductListProps {
   items: Product[];
@@ -47,13 +47,13 @@ export function ProductList({ items }: ProductListProps) {
                       : "text-muted-foreground"
                   )}
                 >
-                  {item.price}
+                  {formatNumberToCurrency(item.price, 'NGN')}
                 </div>
               </div>
 
               <div className="flex items-center gap-2">
-                <div className="px-3 py-1 rounded-lg">
-                  <ShoppingCart />
+                <div className="py-1 rounded-lg bg-white  px-3 mt-2">
+                  <PlusIcon fontSize={10} className="text-[10px] text-black" />
                 </div>
               </div>
             </div>

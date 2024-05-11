@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/resizable";
 import { Separator } from "@/components/ui/separator";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { ProductList } from "@/app/(site)/components/mail-list";
+import { ProductList } from "@/app/(site)/components/product-list";
 import { type Product } from "@/app/(site)/data";
 import { useProduct } from "@/app/(site)/use-product";
 import Sidebar from "@/components/Sidebar";
