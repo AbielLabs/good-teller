@@ -11,33 +11,27 @@ import {
 } from "@/components/ui/resizable";
 import { Separator } from "@/components/ui/separator";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { MailList } from "@/app/(site)/components/mail-list";
-import { type Mail } from "@/app/(site)/data";
-import { useMail } from "@/app/(site)/use-mail";
+import { ProductList } from "@/app/(site)/components/product-list";
+import { type Product } from "@/app/(site)/data";
+import { useProduct } from "@/app/(site)/use-product";
 import Sidebar from "@/components/Sidebar";
 import CartTab from "@/components/CartTab";
 
-interface MailProps {
-  accounts: {
-    label: string;
-    email: string;
-    icon: React.ReactNode;
-  }[];
-  mails: Mail[];
+interface ProductProps {
+  products: Product[];
   defaultLayout: number[] | undefined;
   defaultCollapsed?: boolean;
   navCollapsedSize: number;
 }
 
 export function Products({
-  accounts,
-  mails,
+  products,
   defaultLayout = [265, 440, 655],
   defaultCollapsed = false,
   navCollapsedSize,
-}: MailProps) {
+}: ProductProps) {
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
-  const [mail] = useMail();
+  const [product] = useProduct();
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -60,11 +54,14 @@ export function Products({
         <ResizableHandle withHandle />
         {/* second part */}
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
-          <div className="px-3 py-2 ">
-            <h1>Good Teller</h1>
-            <Separator />  F
+          <div className="px-3 py-4 flex flex-col gap-3">
+            <h1 className="font-sans font-bold ">Good Teller</h1>
+            <Separator />
           </div>
-          <MailList items={mails} />
+          <div className="px-3 mt-3 mb-[2rem]">
+            <Input placeholder="Search Products..." />
+          </div>
+          <ProductList items={products} />
         </ResizablePanel>
         <ResizableHandle withHandle />
         <CartTab defaultSize={defaultLayout[2]} />

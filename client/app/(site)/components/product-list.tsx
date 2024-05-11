@@ -1,19 +1,21 @@
 import { ComponentProps } from "react";
 import { formatDistanceToNow } from "date-fns";
 
-import { cn } from "@/lib/utils";
+import { cn, formatNumberToCurrency } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { Mail } from "@/app/(site)/data";
-import { useMail } from "@/app/(site)/use-mail";
+import { Product } from "@/app/(site)/data";
+import { useProduct } from "@/app/(site)/use-product";
+import { Button } from "@/components/ui/button";
+import { CarTaxiFront, PlusIcon, ShoppingCart, ShoppingCartIcon } from "lucide-react";
 
-interface MailListProps {
-  items: Mail[];
+interface ProductListProps {
+  items: Product[];
 }
 
-export function MailList({ items }: MailListProps) {
-  const [mail, setMail] = useMail();
+export function ProductList({ items }: ProductListProps) {
+  const [product, setProduct] = useProduct();
 
   return (
     <ScrollArea className="h-screen">
@@ -23,11 +25,11 @@ export function MailList({ items }: MailListProps) {
             key={item.id}
             className={cn(
               "flex flex-col items-start gap-2 rounded-lg border p-3 text-left text-sm transition-all hover:bg-accent",
-              mail.selected === item.id && "bg-muted"
+              product.selected === item.id && "bg-muted"
             )}
             onClick={() =>
-              setMail({
-                ...mail,
+              setProduct({
+                ...product,
                 selected: item.id,
               })
             }
@@ -36,46 +38,28 @@ export function MailList({ items }: MailListProps) {
               <div className="flex items-center">
                 <div className="flex items-center gap-2">
                   <div className="font-semibold">{item.name}</div>
-                  {!item.read && (
-                    <span className="flex h-2 w-2 rounded-full bg-blue-600" />
-                  )}
                 </div>
                 <div
                   className={cn(
                     "ml-auto text-xs",
-                    mail.selected === item.id
+                    product.selected === item.id
                       ? "text-foreground"
                       : "text-muted-foreground"
                   )}
                 >
-                  {formatDistanceToNow(new Date(item.date), {
-                    addSuffix: true,
-                  })}
+                  {formatNumberToCurrency(item.price, 'NGN')}
                 </div>
               </div>
-              <div className="text-xs font-medium">{item.subject}</div>
+
+              <div className="flex items-center gap-2">
+                <div className="py-1 rounded-lg bg-white  px-3 mt-2">
+                  <PlusIcon fontSize={10} className="text-[10px] text-black" />
+                </div>
+              </div>
             </div>
-            <div className="line-clamp-2 text-xs text-muted-foreground">
-              {item.text.substring(0, 300)}
-            </div>
-                  
           </button>
         ))}
       </div>
     </ScrollArea>
   );
-}
-
-function getBadgeVariantFromLabel(
-  label: string
-): ComponentProps<typeof Badge>["variant"] {
-  if (["work"].includes(label.toLowerCase())) {
-    return "default";
-  }
-
-  if (["personal"].includes(label.toLowerCase())) {
-    return "outline";
-  }
-
-  return "secondary";
 }
