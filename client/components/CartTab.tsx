@@ -5,7 +5,7 @@ import { Separator } from "./ui/separator";
 
 const CartTab = ({ defaultSize }: any) => {
   return (
-    <ResizablePanel defaultSize={defaultSize}>
+    <ResizablePanel order={3} id="3" defaultSize={defaultSize}>
       <Tabs className="self-end" defaultValue="checkout">
         <div className="flex flex-col py-2 px-3 gap-2">
           {" "}

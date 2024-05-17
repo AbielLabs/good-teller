@@ -1,42 +1,31 @@
-import { cookies } from "next/headers";
-import Image from "next/image";
-
-import { Products } from "@/app/(site)/components/home";
+"use client";
 import { products } from "@/app/(site)/data";
+import { Input } from "@/components/ui/input";
+import {
+  ResizableHandle,
+  ResizablePanel,
+} from "@/components/ui/resizable";
+import { Separator } from "@/components/ui/separator";
+import { ProductList } from "./components/product-list";
+import CartTab from "@/components/CartTab";
 
-export default function MailPage() {
-  const layout = cookies().get("react-resizable-panels:layout");
-  const collapsed = cookies().get("react-resizable-panels:collapsed");
-
-  const defaultLayout = layout ? JSON.parse(layout.value) : undefined;
-  const defaultCollapsed = collapsed ? JSON.parse(collapsed.value) : undefined;
-
+export default function HomePage() {
   return (
     <>
-      <div className="md:hidden min-h-screen">
-        <Image
-          src="/examples/mail-dark.png"
-          width={1280}
-          height={727}
-          alt="Mail"
-          className="hidden dark:block"
-        />
-        <Image
-          src="/examples/mail-light.png"
-          width={1280}
-          height={727}
-          alt="Mail"
-          className="block dark:hidden"
-        />
-      </div>
-      <div className="hidden flex-col md:flex">
-        <Products
-          products={products}
-          defaultLayout={defaultLayout}
-          defaultCollapsed={defaultCollapsed}
-          navCollapsedSize={4}
-        />
-      </div>
+          <ResizableHandle withHandle />
+          {/* second part */}
+          <ResizablePanel order={2} id="2" defaultSize={400} minSize={30}>
+            <div className="px-3 py-4 flex flex-col gap-3">
+              <h1 className="font-sans font-bold ">Good Teller</h1>
+              <Separator />
+            </div>
+            <div className="px-3 mt-3 mb-[2rem]">
+              <Input placeholder="Search Products..." />
+            </div>
+            <ProductList items={products} />
+          </ResizablePanel>
+          <ResizableHandle withHandle />
+          <CartTab defaultSize={300} />
     </>
   );
 }
