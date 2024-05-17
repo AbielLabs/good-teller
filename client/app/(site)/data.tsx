@@ -15,12 +15,12 @@ export const products = [
     price: 3200.0,
   },
   {
-    id: "3e7c3f6d-bdf5-46ae-8d90-171300f27ae2",
+    id: "3e7c3f6d-bdf5-46ae-8d90-171300f27e2",
     name: "Cortado",
     price: 2100.0,
   },
   {
-    id: "3e7c3f6d-bdf5-46ae-8d90-171300f27ae2",
+    id: "3e7c3f6d-bdf5-46ae-8d90-17130027ae2",
     name: "Cafe Moncha",
     price: 4200.0,
   },

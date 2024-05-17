@@ -11,7 +11,7 @@ export default function HomeLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const { defaultCollapsed, defaultLayout } = returnlayout();
+    const { defaultCollapsed } = returnlayout();
     const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed);
 
   return (
@@ -25,12 +25,12 @@ export default function HomeLayout({
                 sizes
               )}`;
             }}
-            className="h-full max-h-[800px] items-stretch"
+            className="h-full min-h-[screen] "
           >
             <Sidebar
               isCollapsed={isCollapsed}
               setIsCollapsed={setIsCollapsed} 
-              defaultSize={265}
+              defaultSize={200}
               navCollapsedSize={4}
             />
 
