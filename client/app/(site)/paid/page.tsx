@@ -7,7 +7,7 @@ const PaidUsers = () => {
       <ResizableHandle withHandle />
       {/* second part */}
       <ResizablePanel order={2} id="2" defaultSize={400}>
-        <div className="min-h-screen">paid</div>
+        <div className="min-h-screen px-2 py-2">paid</div>
       </ResizablePanel>
       <ResizableHandle withHandle />
 
