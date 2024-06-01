@@ -10,9 +10,12 @@ import {
 } from './model/email-verication.model';
 import { User, UserModel } from '../user/model/user.model';
 import { AuthService } from './service/auth.service';
-import { Mail } from 'src/mail/mail.service';
+import { Mail } from 'src/mail/service/mail.service';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JWTStrategy } from './strategies/jwt.strategy';
+import { FirmService } from '../firm/service/firm.service';
+import { FirmRepository } from '../firm/repository/firm.repository';
+import { Firm, FirmModel } from '../firm/model/firm.model';
 
 @Module({
   imports: [
@@ -25,6 +28,10 @@ import { JWTStrategy } from './strategies/jwt.strategy';
         name: User.name,
         schema: UserModel,
       },
+      {
+        name: Firm.name,
+        schema: FirmModel,
+      },
     ]),
   ],
   controllers: [AuthController],
@@ -35,6 +42,33 @@ import { JWTStrategy } from './strategies/jwt.strategy';
     Mail,
     LocalStrategy,
     JWTStrategy,
+    FirmService,
+    FirmRepository,
+  ],
+
+  exports: [
+    MongooseModule.forFeature([
+      {
+        name: EmailVerification.name,
+        schema: EmailVerificationModel,
+      },
+      {
+        name: User.name,
+        schema: UserModel,
+      },
+      {
+        name: Firm.name,
+        schema: FirmModel,
+      },
+    ]),
+    UserService,
+    UserRepository,
+    AuthService,
+    Mail,
+    LocalStrategy,
+    JWTStrategy,
+    FirmService,
+    FirmRepository,
   ],
 })
 export class AuthModule {}
