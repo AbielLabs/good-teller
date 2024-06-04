@@ -1,3 +1,5 @@
+import { configs } from 'src/configs';
+
 export function emailFormat(type: string, otp: number): string {
   if (type && type === 'email-OTP') {
     return `<!DOCTYPE html>
@@ -62,15 +64,15 @@ export function emailFormat(type: string, otp: number): string {
   </head>
   <body>
   <div class="container">
-    <div class="logo">
-      <img src="https://oliviacunning.wordpress.com/2012/11/14/general-awesomeness">
-    </div>
-    <h2>OTP Code</h2>
-    <p>Your OTP code is:</p>
-    <p class="otp-code">${otp}</p>
-    ${type === 'email-OTP' ? '<p>Please click <a href="https://example.com/verify-otp" class="verify-link">here</a> to verify your OTP.</p>' : ''}
+    
+    
+    ${type === 'email-OTP' ? '<h2>Email Verification</h2>' : `<h2>OTP Code</h2>`}
+    ${type === 'email-OTP' ? '' : `<p>Your OTP code is:</p>`}
+    ${type === 'email-OTP' ? '' : `<p class="otp-code">${otp}</p>`}
+    ${type === 'email-OTP' ? `'<p>Please click <a href="${configs.Backend_url}/verify-otp/${otp}" class="verify-link">here</a> to verify your OTP.</p>'` : ''}
     <div class="footer">
-      <p>This OTP code is valid for 5 minutes. Please do not share this code with anyone.</p>
+    ${type === 'email-OTP' ? '' : `<p>This OTP code is valid for 5 minutes. Please do not share this code with anyone.</p>`}
+      
     </div>
   </div>
   </body>

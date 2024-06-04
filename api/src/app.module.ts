@@ -11,6 +11,10 @@ import { configs } from './configs';
 import { mailCredential } from './mail/credentials.mail';
 import { PassportModule } from '@nestjs/passport';
 import { JWTStrategy } from './api/auth/strategies/jwt.strategy';
+import { FirmModule } from './api/firm/firm.module';
+import { TransactionModule } from './api/transactions/transation.module';
+import { SubscriptionModule } from './api/subscription/subscription.module';
+import { DebtModule } from './api/debt/debt.module';
 
 @Global()
 @Module({
@@ -28,6 +32,10 @@ import { JWTStrategy } from './api/auth/strategies/jwt.strategy';
     MongooseModule.forRoot(configs.MONGO_URI),
     PassportModule,
     UserModule,
+    FirmModule,
+    TransactionModule,
+    SubscriptionModule,
+    DebtModule,
   ],
   controllers: [AppController],
   providers: [AppService, JWTStrategy],

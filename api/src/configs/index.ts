@@ -8,4 +8,9 @@ export const configs = {
   MAIL_SENDER: process.env.MAIL_SENDER,
   JWT_SECRET: process.env.JWT_SECRET,
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN,
+  DEFAULT_USER_PASSWORD: process.env.DEFAULT_USER_PASSWORD,
+  OTP_ENCODING: process.env.OTP_ENCODING,
+  OTP_STEP: process.env.OTP_STEP,
+  OTP_WINDOW: process.env.OTP_WINDOW,
+  Backend_url: process.env.Backend_url,
 };
