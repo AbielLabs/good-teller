@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { Product } from "@/app/(site)/data";
-import { useProduct } from "@/app/(site)/use-product";
+import { useProduct } from "@/lib/hooks/use-product";
 import { Button } from "@/components/ui/button";
 import { CarTaxiFront, PlusIcon, ShoppingCart, ShoppingCartIcon } from "lucide-react";
 
